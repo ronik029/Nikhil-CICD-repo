@@ -16,6 +16,7 @@ pipeline {
                 apk add docker docker-compose curl unzip 
                 groupadd docker
                 usermod -aG docker $USER
+                echo "YAY"
                 '''
             }
         }
