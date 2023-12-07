@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
+                RUN set -ex && apk --no-cache add sudo
                 sudo apk update
                 apk add docker docker-compose curl unzip 
                 groupadd docker
