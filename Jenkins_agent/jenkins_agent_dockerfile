@@ -1,0 +1,11 @@
+FROM alpine
+
+RUN apk update && \
+    apk add --no-cache sudo socat && \
+    adduser -D jenkins && \
+    addgroup jenkins sudo && \
+    echo 'jenkins ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+USER jenkins
+
+CMD socat tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock

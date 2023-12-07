@@ -12,13 +12,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                echo "test"
-                set -ex && apk --no-cache add sudo
-                sudo apk update
-                apk add docker docker-compose curl unzip 
-                groupadd docker
-                usermod -aG docker $USER
-                echo "YAY"
+                apk update
                 '''
             }
         }
