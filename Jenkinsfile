@@ -1,7 +1,7 @@
 pipeline {
     agent { 
         node {
-            label 'docker-agent-python'
+            label 'docker-agent-alpine'
             }
       }
     triggers {
@@ -12,8 +12,10 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                cd myapp
-                pip install -r requirements.txt
+                apk update
+                apk add docker docker-compose curl unzip 
+                groupadd docker
+                usermod -aG docker $USER
                 '''
             }
         }
@@ -21,9 +23,8 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                cd myapp
-                python3 hello.py
-                python3 hello.py --name=Brad
+                cd gluon_forwarder
+                docker build -t forwarder .
                 '''
             }
         }
@@ -32,6 +33,7 @@ pipeline {
                 echo 'Deliver....'
                 sh '''
                 echo "doing delivery stuff.."
+
                 '''
             }
         }
