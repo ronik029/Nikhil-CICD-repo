@@ -20,7 +20,8 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                echo "doing testing stuff"
+                cd gluon_forwarder
+                docker build -t forwarder .
                 '''
             }
         }
