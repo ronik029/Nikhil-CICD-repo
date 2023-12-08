@@ -21,7 +21,7 @@ pipeline {
                 echo "Testing.."
                 sh '''
                 cd gluon_forwarder
-                sudo docker build -t forwarder .
+                docker build -t forwarder .
                 echo "yay"
                 '''
             }
