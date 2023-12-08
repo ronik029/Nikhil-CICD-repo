@@ -1,3 +1,4 @@
+#Error File
 version: '3'
 
 services:
@@ -17,3 +18,52 @@ services:
 networks:
   jenkins:
     external: true
+
+
+#Working file
+
+
+version: '3'
+
+services:
+  socat:
+    image: alpine/socat
+    command: tcp-listen:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock
+    container_name: socat-container
+    restart: always
+    ports:
+      - "2376:2375"
+    networks:
+      - jenkins
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  jenkins:
+    external: true
+
+# Working file 2
+
+version: '3'
+
+services:
+  socat:
+    build:
+      context: .
+      dockerfile: jenkins_agent_dockerfile
+    container_name: socat-container
+    restart: always
+    command: tcp-listen:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock
+    ports:
+      - "2376:2375"
+    networks:
+      - jenkins
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  jenkins:
+    external: true
+
+
+

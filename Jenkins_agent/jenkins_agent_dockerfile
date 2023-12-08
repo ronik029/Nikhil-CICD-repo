@@ -1,11 +1,35 @@
-FROM alpine
+#Error File
+
+ROM alpine
 
 RUN apk update && \
     apk add --no-cache sudo socat && \
     adduser -D jenkins && \
-    addgroup jenkins sudo && \
+    addgroup jenkins wheel && \
     echo 'jenkins ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER jenkins
 
-CMD socat tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
+
+#Working file
+
+# Use the alpine/socat base image
+FROM alpine/socat
+
+# No need for additional commands in this case
+
+#Working file 2
+
+# Use the alpine/socat base image
+FROM alpine/socat
+
+RUN apk update && \
+    apk add --no-cache sudo socat && \
+    adduser -D jenkins && \
+    addgroup jenkins wheel && \
+    echo 'jenkins ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+USER jenkins
+
+
+# No need for additional commands in this case
