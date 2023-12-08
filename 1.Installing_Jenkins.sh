@@ -62,3 +62,17 @@ docker inspect <container name>
 # 13 Go to Jenkins UI and create a cloud docker
 
 # 14 Go to configure of the above docker cloud and Select Docker Agent Templates > 
+
+
+
+
+
+
+
+
+
+
+
+
+#API to stop a running workflow
+http://172.172.175.32:8080/computer/docker%2Dagent%2Dalpine%2D0002oikbvsdmu/executors/0/stopBuild?runExtId=
