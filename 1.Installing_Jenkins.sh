@@ -1,5 +1,7 @@
 #Installing Jenkins and making a demo project
-#Souce :- https://github.com/devopsjourney1/jenkins-101
+#Source :- https://github.com/devopsjourney1/jenkins-101
+#Adding jenkins native agent :- https://www.pluralsight.com/resources/blog/cloud/adding-a-jenkins-agent-node
+# Creating pipeline :- 
 
 #1. Install git
 sudo apt install git
@@ -21,6 +23,12 @@ sudo usermod -aG docker $USER
 
 #6 Create a jenkins network (bridge mode)
 docker network create jenkins
+
+# Clone the repo from github
+git clone https://github.com/devopsjourney1/jenkins-101.git
+
+# Create an image from the dockerfile
+docker build -t myjenkins-blueocean:2.414.2 .
 
 #7 run the docker container
 

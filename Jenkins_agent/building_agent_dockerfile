@@ -1,12 +1,16 @@
 FROM jenkins/agent:alpine-jdk11
 
 USER root
-RUN apk add python3
-RUN apk add py3-pip
-RUN apk add sudo
-RUN apk add --update docker openrc
-RUN rc-update add docker boot
 
+# Install necessary packages
+RUN apk add python3 \
+    && apk add py3-pip \
+    && apk add sudo \
+    && apk add --update docker openrc \
+    && rc-update add docker boot
 
+# Add the 'jenkins' user to the 'wheel' group
+RUN adduser jenkins wheel
 
 USER jenkins
+
