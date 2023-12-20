@@ -72,8 +72,22 @@ docker inspect <container name>
 # 14 Go to configure of the above docker cloud and Select Docker Agent Templates > 
 
 
+#### Setting up agent
+
+#give no password permission to a user for sudo
+username ALL=(ALL) NOPASSWD: ALL
+
+#Setting to remember for agent
+CONFIGURE AGENT -> LAUNCH METHOD -> Manually trusted key verification strategy - > SAVE.
+
+#Install Java, git
+sudo apt-get install openjdk-11-jdk -y
+sudo apt install git -y
+sudo apt install docker.io docker-compose -y
 
 
+#Change owner -R for the home directory of jenkins
+chown -R #JENKINS_HOME
 
 
 

@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                touch test.txt
+                touch test1.txt
                 '''
             }
         }
@@ -22,7 +22,7 @@ pipeline {
                 sh '''
                 cd gluon_forwarder
                 docker build -t forwarder .
-                echo "yay"
+                echo "yay ban gya"
                 '''
             }
         }
